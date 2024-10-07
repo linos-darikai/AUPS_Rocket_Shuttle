@@ -39,52 +39,49 @@ The flight control software is where the magic happens! It's divided into three 
 
 ### 2. **Flight**
 - ✈️ Stabilization algorithms keep our shuttle balanced in the sky using data from the **MPU6050**.
-- 📊 We implemented a **Kalman filter** to process inputs from the various sensors (BMP280, MPU6050, and ATMG366H). This smart filtering technique reduces noise and improves accuracy, ensuring reliable flight control. Given the limited memory resources of the **ATmega8**, we optimized the Kalman filter to fit within its constraints. 🚀
+- 📊 We implemented a **Kalman filter** to process inputs from the various sensors (BMP280, MPU6050, and ATMG366H). This smart filtering technique reduces noise and improves accuracy, ensuring smooth flight.
 
 ### 3. **Landing**
-- 🪂 The parachute deployment is controlled by the software, triggered at a specific altitude for a safe and gentle descent!
+- 🛬 The software deploys the parachute for a controlled descent, ensuring a safe landing.
 
-### 📚 Key Libraries Used
-- **GY6050**: To interface with the MPU6050 accelerometer.
-- **Adafruit MPU6050**: For reading data from the MPU6050.
-- **Adafruit Sensor**: A common interface for various sensors.
-- **Wire**: I2C library for sensor communication.
-- **SPI**: For high-speed communication.
-- **TinyGPS++**: For parsing GPS data from the ATMG366H module.
+## 📚 Required Libraries
+To run the code, ensure you have the following libraries installed:
+- **GY6050**
+- **Adafruit MPU6050**
+- **Adafruit Sensor**
+- **Wire**
+- **SPI**
+- **TinyGPS++**
 
-## 🔄 Design Process
+## ⚠️ Known Issues
+There is a clash between the **MPU6050** and **GPS** modules on the **ATmega8**. Both components use the same **ISP** pin, which means they cannot operate simultaneously with the current design. As a result, only one can work at a time. This issue has not yet been resolved.
 
-Our design journey was an epic adventure, including:
-1. 🧐 Information gathering
-2. 💡 Ideation
-3. 🧪 Experimentation
-4. ✅ Concept selection (using Pugh charts)
-5. 🛠️ Prototyping
-6. 🖨️ 3D modeling and printing
-7. 🔧 Assembly and integration
-8. 🚀 Testing
+## 🔍 Design Process
+The project followed an iterative design cycle:
+- Information gathering
+- Ideation
+- Experimentation
+- Concept selection (using Pugh charts)
+- Prototyping
+- 3D modeling and printing
+- Assembly and integration
+- Testing
 
-## 🧪 Testing and Results
+## ⚙️ Testing and Results
+- GPS functionality tested in open air
+- Hatch release mechanism tested successfully
+- Drop test conducted from two stories high with successful parachute deployment
 
-- 🌤️ GPS functionality tested in open air
-- 🔓 Hatch release mechanism tested successfully
-- 🎉 Drop test conducted from two stories high with a successful parachute deployment!
-  
-
-## 🔮 Future Applications
-
+## 🚀 Future Applications
 While originally designed for ISS lab module transport, the AUPS could potentially be adapted for:
-- 🛰️ Satellite launches
-- 🚀 Astronaut transport (with life support modifications)
+- 🚀 Satellite launches
+- 👨‍🚀 Astronaut transport (with life support modifications)
 
 ## 🤝 Contributing
+This project was developed as part of a university course. While it's not actively maintained, we welcome suggestions and ideas for improvement. Please open an issue to discuss any proposed changes.
 
-This project was developed as part of a university course. While it's not actively maintained, we welcome suggestions and ideas for improvement. Please open an issue to discuss any proposed changes!
-
-## 🙌 Acknowledgments
-
-A big shoutout to the **Department of Engineering** at Ashesi University and all the amazing team members who contributed to this project! 🎓💖
+## 🙏 Acknowledgments
+Special thanks to the Department of Engineering at Ashesi University and all the team members who contributed to this project.
 
 ## ⚠️ Disclaimer
-
-This is a prototype design created for educational purposes and has not been tested for actual space flight. Any use of this design for real-world applications would require extensive further development and testing. 🚧
+This is a prototype design created for educational purposes and has not been tested for actual space flight. Any use of this design for real-world applications would require extensive further development and testing.
